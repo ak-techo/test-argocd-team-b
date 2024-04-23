@@ -1,0 +1,29 @@
+{{- if .Values.bigQueryDatasets }}
+{{- range .Values.bigQueryDatasets }}
+apiVersion: bigquery.gcp.vonage.com/v1alpha1
+kind: Dataset
+metadata:
+  name: {{ .name }}
+spec:
+  datasetId: {{ .datasetId }}
+  project: {{ .projectId }}
+  location: {{ .location }}
+  {{- if .labels }}
+  labels:
+  {{- range $key, $value := .labels}}
+    {{ $key }}: {{ $value }}
+  {{- end }}
+  {{- end }}
+  {{- if .access }}
+  access:
+  {{- range .access }}
+  - role: {{ .role }}
+    userByEmail: {{ .userByEmail }}
+  {{- end }}
+  {{- end }}
+  providerConfigRef:
+    name: {{ $.Values.providerConfigName }}
+
+---
+{{- end }}
+{{- end }}

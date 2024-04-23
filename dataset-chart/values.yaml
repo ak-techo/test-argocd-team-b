@@ -1,0 +1,16 @@
+providerConfigName: team-b-config
+namespace: team-b
+bigQueryDatasets:
+- name: test_argo1
+  datasetId: test_argo1
+  location: us-central1
+  projectId: vonage-internal-playground
+  # access:
+  # - role: "OWNER"
+  #   userByEmail: "test-sa@vonage-internal-playground.iam.gserviceaccount.com"
+  # - role: "EDITOR"
+  #   userByEmail: "test-sa@vonage-internal-playground.iam.gserviceaccount.com"
+- name: test_argo2
+  datasetId: test_argo2
+  location: us-central1
+  projectId: vonage-internal-playground
