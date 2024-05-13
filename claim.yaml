@@ -1,0 +1,49 @@
+apiVersion: v1
+items:
+- apiVersion: compute.gcp.vonage.com/v1alpha1
+  kind: Subnetwork
+  metadata:
+    creationTimestamp: "2024-05-13T06:43:49Z"
+    finalizers:
+    - finalizer.apiextensions.crossplane.io
+    generation: 28
+    labels:
+      argocd.argoproj.io/instance: testing
+      gkebackup-backup-uid: ca6f6c68-7eac-4542-acb8-8c4f23c6aab9
+      gkebackup-restore-uid: ed6d7821-cb18-437a-82a7-25a303a39a02
+    name: test-subnet-one
+    namespace: team-b
+    resourceVersion: "30394"
+    uid: 48aa3e56-b648-4a95-8d99-8a5b00a28160
+  spec:
+    compositeDeletePolicy: Background
+    compositionRef:
+      name: subnetwork
+    compositionRevisionRef:
+      name: subnetwork-f86241a
+    compositionUpdatePolicy: Automatic
+    ipCidrRange: 10.120.0.0/20
+    networkSelector:
+      matchLabels:
+        network-name: test-vpc
+    providerConfigRef:
+      name: team-b-config
+    region: us-central1
+    resourceRef:
+      apiVersion: compute.gcp.vonage.com/v1alpha1
+      kind: XSubnetwork
+      name: test-subnet-one-gspjb
+    subnetName: test-subnet-one
+  status:
+    conditions:
+    - lastTransitionTime: "2024-05-13T06:45:45Z"
+      reason: ReconcileSuccess
+      status: "True"
+      type: Synced
+    - lastTransitionTime: "2024-05-13T06:58:24Z"
+      reason: Available
+      status: "True"
+      type: Ready
+kind: List
+metadata:
+  resourceVersion: ""
