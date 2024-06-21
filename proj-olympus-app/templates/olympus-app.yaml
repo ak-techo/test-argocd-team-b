@@ -7,20 +7,20 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  source:
-    repoURL: 'https://github.com/ak-techo/test-argocd-team-a.git'
-    path: dataset-chart
-    targetRevision: main
-    helm:
-      values: |
-        providerConfigName: boot-gcp-key
-        namespace: default
+  sources:
+    - repoURL: 'https://github.com/ak-techo/test-argocd-team-a.git'
+      path: dataset-chart
+      targetRevision: main
+      helm:
+        values: |
+          providerConfigName: boot-gcp-key
+          namespace: default
 
-        bigQueryDatasets:
-        - name: test_argo1
-          datasetId: test_argo1
-          location: us-central1
-          projectId: vonage-internal-playground
+          bigQueryDatasets:
+          - name: test_argo2
+            datasetId: test_argo2
+            location: us-central1
+            projectId: vonage-internal-playground
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
