@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: proj-olympus
   namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
@@ -13,7 +15,7 @@ spec:
       values: |
         providerConfigName: boot-gcp-key
         namespace: default
-        
+
         bigQueryDatasets:
         - name: test_argo1
           datasetId: test_argo1
