@@ -17,8 +17,8 @@ spec:
           namespace: default
 
           bigQueryDatasets:
-          - name: test_argo2
-            datasetId: test_argo2
+          - name: crosstest
+            datasetId: crosstest
             location: us-central1
             projectId: vonage-internal-playground
   destination:
