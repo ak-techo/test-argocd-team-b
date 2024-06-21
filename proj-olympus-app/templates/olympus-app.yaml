@@ -1,26 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: subnet
+  name: proj-olympus
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/ak-techo/test-argocd-team-a.git'
-    path: sub-chart
+    path: dataset-chart
     targetRevision: main
     helm:
       values: |
         providerConfigName: boot-gcp-key
         namespace: default
-
-        subnets:
-          - subnetName: "test-subnet-one"
-            networkSelector:
-              matchLabels:
-                network-name: test-vpc
-            ipCidrRange: "10.120.0.0/20"
-            region: "us-central1"
+        
+        bigQueryDatasets:
+        - name: test_argo1
+          datasetId: test_argo1
+          location: us-central1
+          projectId: vonage-internal-playground
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
