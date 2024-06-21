@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: proj-olympus
+  name: proj-dash-dev
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -9,18 +9,20 @@ spec:
   project: default
   sources:
     - repoURL: 'https://github.com/ak-techo/test-argocd-team-a.git'
-      path: dataset-chart
+      path: sub-chart
       targetRevision: main
       helm:
         values: |
           providerConfigName: boot-gcp-key
           namespace: default
 
-          bigQueryDatasets:
-          - name: crosstest
-            datasetId: crosstest
-            location: us-central1
-            projectId: vonage-internal-playground
+          subnets:
+            - subnetName: "test-subnet-one"
+              networkSelector:
+                matchLabels:
+                  network-name: test-vpc
+              ipCidrRange: "10.120.0.0/20"
+              region: "us-central1"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
