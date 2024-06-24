@@ -21,21 +21,6 @@ spec:
             datasetId: crosstest
             location: us-central1
             projectId: vonage-internal-playground
-    - repoURL: 'https://github.com/ak-techo/test-argocd-team-a.git'
-      path: sub-chart
-      targetRevision: main
-      helm:
-        values: |
-          providerConfigName: boot-gcp-key
-          namespace: default
-
-          subnets:
-            - subnetName: "test-subnet-two"
-              networkSelector:
-                matchLabels:
-                  network-name: test-vpc
-              ipCidrRange: "10.120.1.0/20"
-              region: "us-east1"
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
