@@ -13,16 +13,7 @@ spec:
       targetRevision: main
       helm:
         values: |
-          providerConfigName: boot-gcp-key
-          namespace: default
-
-          subnets:
-            - subnetName: "test-subnet-one"
-              networkSelector:
-                matchLabels:
-                  network-name: test-vpc
-              ipCidrRange: "10.120.0.0/20"
-              region: "us-central1"
+          {{ .Values.resources | toYaml | nindent 2 }}
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
